@@ -1,34 +1,45 @@
 // ICE
 import React, { useState } from 'react';
+import axios from 'axios';
 
 class Card extends React.Component {
-// CCR
-// useState for Github data
-constructor() {
-    super();
-    this.state={
-	    name: "Hello World"
-	};	
-}
+    // CCR
+    // useState for Github data
+    constructor() {
+        super();
+        this.state={
+            name: "",
+            login: "",
+            location: ""
+        };	
+    }
 
+    // GET request function for axios
+    //use componentDidMount
+    componentDidMount() {
+        axios.get('https://api.github.com/users/cknoettg')
+        .then(response => {
+            console.log(response);
+            this.setState({
+                name: response.data.name,
+                login: response.data.login,
+                location: response.data.location
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }//end of getData
 
-// GET request function for axios
-//convert this to class method
-let myObj = axios.get('https://api.github.com/users/cknoettg')
-  .then(response => {
-    cards.appendChild(cardCreator(response.data));
-    console.log(response);
-  })
-  .catch(err => {
-    console.log(err);
-  })
-
-  //render method
-  render() {
-      return (
-          <h1>Github User Data</h1>
-      );
-  }//end of render
+    
+    //render method
+    render() {
+        return (
+            [<p>{this.state.name}</p>,
+            <p>{this.state.login}</p>,
+            <p>{this.state.location}</p>]
+        )
+    };//end of render
 
 }//end of Card
 
