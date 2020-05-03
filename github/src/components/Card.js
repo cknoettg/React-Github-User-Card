@@ -65,6 +65,6 @@ class Card extends React.Component {
         )
     };//end of render
 
-}//end of Card
+}//end of Cards
 
 export default Card;
