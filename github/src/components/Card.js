@@ -1,5 +1,6 @@
 // ICE
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import axios from 'axios';
 
 class Card extends React.Component {
@@ -8,9 +9,14 @@ class Card extends React.Component {
     constructor() {
         super();
         this.state={
+            avatar_url: "",
             name: "",
             login: "",
-            location: ""
+            location: "",
+            profile: "",
+            followers: "",
+            following: "",
+            bio: ""
         };	
     }
 
@@ -21,9 +27,14 @@ class Card extends React.Component {
         .then(response => {
             console.log(response);
             this.setState({
+                avatar_url: response.data.avatar_url,
                 name: response.data.name,
                 login: response.data.login,
-                location: response.data.location
+                location: response.data.location,
+                profile: response.data.url,
+                followers: response.data.followers,
+                following: response.data.following,
+                bio: response.data.bio
             });
         })
         .catch(err => {
@@ -35,9 +46,22 @@ class Card extends React.Component {
     //render method
     render() {
         return (
-            [<p>{this.state.name}</p>,
-            <p>{this.state.login}</p>,
-            <p>{this.state.location}</p>]
+            <div class="card">
+                <img src={this.state.avatar_url} />
+                <div class="card-info">
+                    <h3 class="name">{this.state.name}</h3>
+                    <p class="username">{this.state.login}</p>
+                    <p>Location: {this.state.location}</p>
+                    <p>Profile: 
+                    <Router> 
+                    <Link href={this.state.profile}> {this.state.profile}</Link>
+                    </Router>
+                    </p>
+                    <p>Followers: {this.state.followers}</p>
+                    <p>Following: {this.state.following}</p>
+                    <p>Bio: {this.state.bio}</p>
+                </div>
+            </div>
         )
     };//end of render
 
