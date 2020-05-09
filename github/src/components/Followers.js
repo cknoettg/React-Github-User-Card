@@ -14,7 +14,7 @@ class Followers extends React.Component {
         .then(response => {
             console.log("User data", response);
             this.setState({
-                user: response.data
+                followers: response.data
             });
         })
         .catch(err => {
@@ -26,6 +26,8 @@ class Followers extends React.Component {
     render() {
         return (
             <div className="follower-card">
+                <h3>Followers</h3>
+                <p>{this.state.followers}</p>
                 <img src={this.state.avatar_url} alt="friend" />
                 <div className="card-info">
                     <h3 className="name">{this.state.name}</h3>

@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import UserCard from './components/UserCard';
+import User from './components/User';
+//import UserCard from './components/UserCard';
+//import Followers from './components/Followers';
 import FollowerCard from './components/FollowerCard';
 
 function App() {
   return (
     <div className="App">
-      <UserCard />
+      <User />
       {/* <FollowerCard /> */}
     </div>
   );

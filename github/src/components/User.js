@@ -2,7 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class Card extends React.Component {
+class User extends React.Component {
     // CCR
     // state for Github data
     constructor() {
@@ -33,17 +33,17 @@ class Card extends React.Component {
     render() {
         return (
             <div className="card">
-                <img src={this.state.avatar_url} alt="me" />
+                <img src={this.state.user.avatar_url} style={{width:200,height:200}} alt="me" />
                 <div className="card-info">
-                    <h3 className="name">{this.state.name}</h3>
-                    <p className="username">{this.state.login}</p>
-                    <p>Location: {this.state.location}</p>
+                    <h3 className="name">{this.state.user.name}</h3>
+                    <p className="username">{this.state.user.login}</p>
+                    <p>Location: {this.state.user.location}</p>
                     <p>Profile: 
-                    <a href={this.state.profile}> {this.state.profile} </a>
+                    <a href={this.state.user.profile}> {this.state.user.profile} </a>
                     </p>
-                    <p>Followers: {this.state.followers}</p>
-                    <p>Following: {this.state.following}</p>
-                    <p>Bio: {this.state.bio}</p>
+                    <p>Followers: {this.state.user.followers}</p>
+                    <p>Following: {this.state.user.following}</p>
+                    <p>Bio: {this.state.user.bio}</p>
                 </div>
             </div>
         )
@@ -51,4 +51,4 @@ class Card extends React.Component {
 
 }//end of User
 
-export default Card;
+export default User;
