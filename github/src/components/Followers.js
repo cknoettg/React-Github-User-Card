@@ -26,7 +26,7 @@ class Followers extends React.Component {
     render() {
         return (
             <div className="follower-card">
-                <img src={this.state.avatar_url} alt="me" />
+                <img src={this.state.avatar_url} alt="friend" />
                 <div className="card-info">
                     <h3 className="name">{this.state.name}</h3>
                     <p className="username">{this.state.login}</p>
