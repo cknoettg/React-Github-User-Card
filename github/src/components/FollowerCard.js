@@ -8,6 +8,7 @@ class FollowerCard extends React.Component {
         };
     }
 
+    //when we do our render, do this.state.myFollowers.map ((element, index) => {key="index" value="element"})
 }
 
 export default FollowerCard;
