@@ -1,6 +1,5 @@
 // ICE
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import React from 'react';
 import axios from 'axios';
 
 class Card extends React.Component {
@@ -47,15 +46,13 @@ class Card extends React.Component {
     render() {
         return (
             <div class="card">
-                <img src={this.state.avatar_url} />
+                <img src={this.state.avatar_url} alt="me" />
                 <div class="card-info">
                     <h3 class="name">{this.state.name}</h3>
                     <p class="username">{this.state.login}</p>
                     <p>Location: {this.state.location}</p>
                     <p>Profile: 
-                    <Router> 
-                    <Link href={this.state.profile}> {this.state.profile}</Link>
-                    </Router>
+                    <a href={this.state.profile}> {this.state.profile} </a>
                     </p>
                     <p>Followers: {this.state.followers}</p>
                     <p>Following: {this.state.following}</p>
