@@ -16,24 +16,26 @@ class Followers extends React.Component {
             console.log("Data for one follower", response.data[0]);
             console.log("Avatar for one follower", response.data[0].avatar_url);
             let followersArray = response.data.map(foll =>
-                axios.get(`https://api.github.com/users/${foll.login}`)
-                .then(followerInfo => 
+                // axios.get(`https://api.github.com/users/${foll.login}`)
+                // .then(followerInfo => 
                     <div>
-                        <img src={followerInfo.avatar_url} style={{width:200,height:200}} alt="friend" />
-                        <h3 className="name">{followerInfo.name}</h3>
-                        <p className="username">{followerInfo.login}</p>
-                        <p>Location: {followerInfo.location}</p>
+                        <img src={foll.avatar_url} style={{width:200,height:200}} alt="friend" />
+                        {/* <h3 className="name">{followerInfo.name}</h3> */}
+                        <p className="username">{foll.login}</p>
+                        {/* <p>Location: {followerInfo.location}</p>
                         <p>Profile: 
                         <a href={followerInfo.profile}> {followerInfo.profile} </a>
                         </p>
                         <p>Followers: {followerInfo.followers}</p>
                         <p>Following: {followerInfo.following}</p>
-                        <p>Bio: {followerInfo.bio}</p>
+                        <p>Bio: {followerInfo.bio}</p> */}
+                        {console.log(foll.avatar_url)}
+                        {/* returns an array of prmoises */}
                     </div>                
-                )
+                //)
             )
             this.setState({
-                followersArray
+                followers: followersArray
             });
         })
         .catch(err => {
@@ -50,7 +52,7 @@ class Followers extends React.Component {
             <div className="follower-card">
                 <h3>Followers</h3>
                 <div className="card-info">
-                    <div>{this.state.followersArray}</div>
+                    <div>{this.state.followers}</div>
                 </div>
             </div>
         )
